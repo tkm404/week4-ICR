@@ -4,9 +4,12 @@ function Pizza(size, topping, price) {
   this.price = price
 }
 
+Pizza.prototype.addToppings = function(topping) {
+  this.toppings.push(topping);
+  console.log(smallPizza)
+}
+
+
 const smallPizza = new Pizza("small", ["pepperoni"], 5);
 const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
 const largePizza = new Pizza ("large", ["pepperoni"], 10)
-console.log(smallPizza);
-console.log(mediumPizza);
-console.log(largePizza);
