@@ -9,12 +9,11 @@ Pizza.prototype.addToppings = function(topping) {
   this.toppings.push(topping);
   for (let i = 1; i < this.toppings.length; i++) {
     toppingCount++
-    console.log(toppingCount)
   }
-    this.price + toppingCount;
-    console.log(smallPizza.price);
-  }
+  this.price = toppingCount + this.price
+};
 
+  
 
 const smallPizza = new Pizza("small", ["pepperoni"], 5);
 const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
