@@ -36,17 +36,17 @@ Checkout.prototype.priceCalculator = function() {
 
 function Pizza(size, topping) {
   this.size = size
-  this.toppings = [topping]
+  this.toppings = topping
   this.price = 0
 }
 
-Pizza.prototype.addToppings = function([topping]) {
+Pizza.prototype.addToppings = function(topping) {
   if (this.size === "Small") {
-      this.toppingSet(5, [topping])
+      this.toppingSet(5, topping)
   } else if (this.size === "Medium") {
-      this.toppingSet(7, [topping])
+      this.toppingSet(7, topping)
   } else {
-      this.toppingSet(10, [topping])
+      this.toppingSet(10, topping)
   }
 };
 
@@ -72,7 +72,7 @@ Pizza.prototype.yourPizza = function() {
 
 function handleMenuSubmission(event) {
   event.preventDefault();
-  let topFormArray = ["pepperoni"];
+  let topFormArray = [];
   const myCheckout = new Checkout();
   const sizeSelect = document.getElementById("size-pizza").value;
   const topSelect = document.querySelectorAll("[name=topping]:checked");
@@ -81,8 +81,9 @@ function handleMenuSubmission(event) {
     topFormArray.push(element.toString());
   });  
   const myPizza = new Pizza(sizeSelect, topFormArray)
-  myPizza.addToppings(topSelectArray);
+  myPizza.addToppings(topFormArray);
   myCheckout.addPizza(myPizza)
+  console.log(myPizza)
   console.log(myCheckout)
 }
 
