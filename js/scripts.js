@@ -10,12 +10,18 @@ Pizza.prototype.toppingSet = function(price, topping) {
 // ---- Business Logic vvvv ----
 function Checkout() {
   this.pizzas = {}
+  this.totalPrice = []
 };
 
 Checkout.prototype.addPizza = function(pizza) {
   this.pizzas[pizza.size] = pizza;
+  let price = pizza.price
+  this.totalPrice.push(price)
   console.log(myCheckout)
+  console.log(price)
 }
+
+Checkout.prototype.priceCalculator
 
 function Pizza(size, topping, price) {
   this.size = size

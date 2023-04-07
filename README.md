@@ -39,9 +39,14 @@ Expected Output: "small pizza with pepperoni, and sausage for $6."
 // 
 
 Describe: Checkout();
+
 Test: "It should return a Checkout object which contains Pizza objects."
 Code: myCheckout = new Checkout();
 Expected Output: Checkout { pizzas: {} }
+
+Test: "It should return a Checkout object with contains Pizza objects and a total price array."
+Code: myCheckout = new Checkout();
+Expected Output: Checkout { pizzas: {}, totalPrice: []}
 
 //
 
@@ -49,3 +54,7 @@ Describe: Checkout.addPizza();
 Test: "It should add a Pizza object to the Checkout object."
 Code: myCheckout.addPizza(smallPizza);
 Expected Output: Checkout { pizzas: {small}}
+
+Test: "It should collect the prices of each pizza object in the checkout object."
+Code: myCheckout.addPizza(smallPizza); myCheckout.addPizza(mediumPizza);
+Expected Output: Checkout { pizzas: {small}, {medium}, totalPrice: [5, 7]}
