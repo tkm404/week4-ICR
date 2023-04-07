@@ -1,11 +1,14 @@
 // ----- Utility Logic vvvv -----
 
 Pizza.prototype.toppingSet = function(price, topping) {
+  if (topping === undefined) {
+    this.price = price
+  } else {
   this.toppings.push(" " + topping);
-      numberOfToppings = this.toppings.length-2
+      numberOfToppings = this.toppings.length-1
       this.price = price + numberOfToppings
+  }
 };
-
 
 // ----- Business Logic vvvv -----
 
@@ -37,7 +40,7 @@ function Pizza(size, topping) {
   this.price = 0
 }
 
-Pizza.prototype.addToppings = function(topping) {
+Pizza.prototype.addToppings = function([topping]) {
   if (this.size === "Small") {
       this.toppingSet(5, topping)
   } else if (this.size === "Medium") {
@@ -69,11 +72,13 @@ Pizza.prototype.yourPizza = function() {
 
 function handleMenuSubmission(event) {
   event.preventDefault();
+  let topFormArray = ["pepperoni"];
   const myCheckout = new Checkout();
   const sizeSelect = document.getElementById("size-pizza").value;
   const topSelect = document.querySelectorAll("input[name=topping]:checked");
-  const myPizza = new Pizza(sizeSelect, topSelect)
-  myPizza.addToppings(topSelect);
+  const topSelectArray = Array.from(topSelect);  
+  const myPizza = new Pizza(sizeSelect, topFormArray)
+  myPizza.addToppings(topSelectArray);
   myCheckout.addPizza(myPizza)
   console.log(myCheckout)
 }
