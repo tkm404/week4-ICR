@@ -35,3 +35,10 @@ Expected Output: "small pizza with pepperoni for $5."
 Test: "It should return a list of toppings with 'and' when multiple toppings are in the array."
 Code: smallPizza.yourPizza();
 Expected Output: "small pizza with pepperoni, and sausage for $6."
+
+// 
+
+Describe: Checkout();
+Test: "It should return a Checkout object which contains Pizza objects."
+Code: myCheckout = new Checkout();
+Expected Output: Checkout {pizzas: {} }

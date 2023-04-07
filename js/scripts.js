@@ -2,8 +2,8 @@ function Checkout() {
   this.pizzas = {}
 };
 
-Checkout.prototype.addPizza = function() {
-
+Checkout.prototype.addPizza = function(pizza) {
+  this.pizzas[pizza.size] = pizza;
 }
 
 function Pizza(size, topping, price) {
@@ -36,12 +36,11 @@ Pizza.prototype.addToppings = function(topping) {
     
 };
 
-Pizza.prototype.priceCalculator = function() {}
 
 Pizza.prototype.yourPizza = function() {
   if (this.toppings.length > 1) {
-  let lastTopping = this.toppings.pop()
-  return this.size + " pizza with " + this.toppings.toString() + " and" + lastTopping + " for $" + this.price;
+    let lastTopping = this.toppings.pop();
+    return this.size + " pizza with " + this.toppings.toString() + " and" + lastTopping.toString() + " for $" + this.price;
   } else {
     return this.size + " pizza with " + this.toppings.toString() + " for $" + this.price;
   }
