@@ -18,7 +18,7 @@ Pizza.prototype.addToppings = function(topping) {
   for (let i = 1; i < this.toppings.length; i++) {
     toppingCount++
   }
-  this.price = toppingCount + this.price
+  this.price = toppingCount ! + this.price
 };
 
 Pizza.prototype.yourPizza = function() {
