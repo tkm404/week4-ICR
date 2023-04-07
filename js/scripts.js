@@ -2,7 +2,7 @@
 
 Pizza.prototype.toppingSet = function(price, topping) {
   this.toppings.push(" " + topping);
-      numberOfToppings = this.toppings.length-1
+      numberOfToppings = this.toppings.length-2
       this.price = price + numberOfToppings
 };
 
@@ -31,64 +31,51 @@ Checkout.prototype.priceCalculator = function() {
 
 // Pizza Object vvvv
 
-function Pizza(size, topping, price) {
+function Pizza(size, topping) {
   this.size = size
   this.toppings = [topping]
-  this.price = price
+  this.price = 0
 }
 
 Pizza.prototype.addToppings = function(topping) {
-  if (this.size === "small") {
+  if (this.size === "Small") {
       this.toppingSet(5, topping)
-      console.log(smallPizza);
-  } else if (this.size === "medium") {
+  } else if (this.size === "Medium") {
       this.toppingSet(7, topping)
-      console.log(mediumPizza);
   } else {
       this.toppingSet(10, topping)
-      console.log(largePizza);
   }
 };
 
 Pizza.prototype.yourPizza = function() {
   if (this.toppings.length > 1) {
     let lastTopping = this.toppings.pop();
-    return this.size + " pizza with " + this.toppings.toString() + " and" + lastTopping.toString() + " for $" + this.price;
+    return this.size + " pizza with pepperoni," + this.toppings.toString() + " and" + lastTopping.toString() + " for $" + this.price;
   } else {
-    return this.size + " pizza with " + this.toppings.toString() + " for $" + this.price;
+    return this.size + " pizza with pepperoni," + this.toppings.toString() + " for $" + this.price;
   }
 };
 
   
 
-const smallPizza = new Pizza("small", ["pepperoni"], 5);
-const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
-const largePizza = new Pizza ("large", ["pepperoni"], 10)
+// const smallPizza = new Pizza("small", ["pepperoni"], 5);
+// const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
+// const largePizza = new Pizza ("large", ["pepperoni"], 10)
 
 
 // ----- User Interface Logic vvvv -----
 
 
 
-function priceGetter(sizeSelect) {
-  let price = 0  
-if (sizeSelect === "Small") {
-    price = 5
-  } else if (sizeSelect === "Medium") {
-    price = 7
-  } else {
-    price = 10
-  }
-};
-
 function handleMenuSubmission(event) {
   event.preventDefault();
   const myCheckout = new Checkout();
   const sizeSelect = document.getElementById("size-pizza").value;
   const topSelect = document.querySelectorAll("input[name=topping]:checked");
-  priceGetter(sizeSelect);
-  const myPizza = new Pizza(sizeSelect, topSelect, price)
+  const myPizza = new Pizza(sizeSelect, topSelect)
+  myPizza.addToppings(topSelect);
   myCheckout.addPizza(myPizza)
+  console.log(myCheckout)
 }
 
 
