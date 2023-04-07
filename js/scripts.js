@@ -13,13 +13,18 @@ function Pizza(size, topping, price) {
 }
 
 Pizza.prototype.addToppings = function(topping) {
-  let toppingCount = 0
-  this.toppings.push(" " + topping);
-  for (let i = 1; i < this.toppings.length; i++) {
-    toppingCount++
-  }
-  this.price = toppingCount ! + this.price
+  if (this.size === "small") {
+      let price = 5
+      this.toppings.push(" " + topping);
+      numberOfToppings = this.toppings.length-1
+      this.price = price + numberOfToppings
+      console.log(smallPizza)
+    }
+  
+    
 };
+
+Pizza.prototype.priceCalculator = function() {}
 
 Pizza.prototype.yourPizza = function() {
   if (this.toppings.length > 1) {
