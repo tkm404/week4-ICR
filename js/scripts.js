@@ -1,3 +1,11 @@
+function Checkout() {
+  this.pizzas = {}
+};
+
+Checkout.prototype.addPizza = function() {
+
+}
+
 function Pizza(size, topping, price) {
   this.size = size
   this.toppings = [topping]
@@ -13,8 +21,12 @@ Pizza.prototype.addToppings = function(topping) {
   this.price = toppingCount + this.price
 };
 
-  
+Pizza.prototype.yourPizza = function() {
+  return this.size + " pizza with " + this.toppings.toString() + " for $" + this.price;
+};
 
+  
+const myCheckout = new Checkout();
 const smallPizza = new Pizza("small", ["pepperoni"], 5);
 const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
 const largePizza = new Pizza ("large", ["pepperoni"], 10)
