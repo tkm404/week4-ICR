@@ -14,7 +14,7 @@ function Pizza(size, topping, price) {
 
 Pizza.prototype.addToppings = function(topping) {
   let toppingCount = 0
-  this.toppings.push(topping);
+  this.toppings.push(" " + topping);
   for (let i = 1; i < this.toppings.length; i++) {
     toppingCount++
   }
@@ -22,7 +22,12 @@ Pizza.prototype.addToppings = function(topping) {
 };
 
 Pizza.prototype.yourPizza = function() {
-  return this.size + " pizza with " + this.toppings.toString() + " for $" + this.price;
+  if (this.toppings.length > 1) {
+  let lastTopping = this.toppings.pop()
+  return this.size + " pizza with " + this.toppings.toString() + " and" + lastTopping + " for $" + this.price;
+  } else {
+    return this.size + " pizza with " + this.toppings.toString() + " for $" + this.price;
+  }
 };
 
   

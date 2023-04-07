@@ -27,6 +27,11 @@ Expected Output: Pizza {size: "small", toppings: ["pepperoni", "sausage"], price
 //
 
 Describe: Pizza.yourPizza();
+
 Test: "It should return a string of all the current pizza's properties."
 Code: smallPizza.yourPizza();
 Expected Output: "small pizza with pepperoni for $5."
+
+Test: "It should return a list of toppings with 'and' when multiple toppings are in the array."
+Code: smallPizza.yourPizza();
+Expected Output: "small pizza with pepperoni, and sausage for $6."
