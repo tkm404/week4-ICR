@@ -1,3 +1,13 @@
+// ---- Utility Logic vvvv ----
+
+Pizza.prototype.toppingSet = function(price, topping) {
+  this.toppings.push(" " + topping);
+      numberOfToppings = this.toppings.length-1
+      this.price = price + numberOfToppings
+};
+
+
+// ---- Business Logic vvvv ----
 function Checkout() {
   this.pizzas = {}
 };
@@ -13,24 +23,18 @@ function Pizza(size, topping, price) {
   this.price = price
 }
 
+
+
+
 Pizza.prototype.addToppings = function(topping) {
   if (this.size === "small") {
-      let price = 5
-      this.toppings.push(" " + topping);
-      numberOfToppings = this.toppings.length-1
-      this.price = price + numberOfToppings
+      this.toppingSet(5, topping)
       console.log(smallPizza);
     } else if (this.size === "medium") {
-      let price = 7
-      this.toppings.push(" " + topping);
-      numberOfToppings = this.toppings.length-1
-      this.price = price + numberOfToppings
+      this.toppingSet(7, topping)
       console.log(mediumPizza);
     } else {
-      let price = 10
-      this.toppings.push(" " + topping);
-      numberOfToppings = this.toppings.length-1
-      this.price = price + numberOfToppings
+      this.toppingSet(10, topping)
       console.log(largePizza);
     }
   
