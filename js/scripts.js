@@ -68,12 +68,11 @@ Pizza.prototype.yourPizza = function() {
 
 // ----- User Interface Logic vvvv -----
 
-
+ const myCheckout = new Checkout();
 
 function handleMenuSubmission(event) {
   event.preventDefault();
   let topFormArray = [];
-  const myCheckout = new Checkout();
   const sizeSelect = document.getElementById("size-pizza").value;
   const topSelect = document.querySelectorAll("[name=topping]:checked");
   const topSelectArray = Array.from(topSelect);
@@ -83,11 +82,10 @@ function handleMenuSubmission(event) {
   const myPizza = new Pizza(sizeSelect, topFormArray)
   myPizza.addToppings(topFormArray);
   myCheckout.addPizza(myPizza)
-  console.log(myPizza)
-  console.log(myCheckout)
+console.log(myCheckout)
 }
 
 
 window.addEventListener("load", function() {
-  this.document.querySelector("div#menu-list").addEventListener("submit", handleMenuSubmission)
+  this.document.querySelector("form#toppings-select").addEventListener("submit", handleMenuSubmission)
 });
