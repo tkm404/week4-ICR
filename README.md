@@ -41,4 +41,11 @@ Expected Output: "small pizza with pepperoni, and sausage for $6."
 Describe: Checkout();
 Test: "It should return a Checkout object which contains Pizza objects."
 Code: myCheckout = new Checkout();
-Expected Output: Checkout {pizzas: {} }
+Expected Output: Checkout { pizzas: {} }
+
+//
+
+Describe: Checkout.addPizza();
+Test: "It should add a Pizza object to the Checkout object."
+Code: myCheckout.addPizza(smallPizza);
+Expected Output: Checkout { pizzas: {small}}

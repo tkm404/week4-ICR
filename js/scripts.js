@@ -4,6 +4,7 @@ function Checkout() {
 
 Checkout.prototype.addPizza = function(pizza) {
   this.pizzas[pizza.size] = pizza;
+  console.log(myCheckout)
 }
 
 function Pizza(size, topping, price) {
