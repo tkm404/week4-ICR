@@ -18,7 +18,19 @@ Pizza.prototype.addToppings = function(topping) {
       this.toppings.push(" " + topping);
       numberOfToppings = this.toppings.length-1
       this.price = price + numberOfToppings
-      console.log(smallPizza)
+      console.log(smallPizza);
+    } else if (this.size === "medium") {
+      let price = 7
+      this.toppings.push(" " + topping);
+      numberOfToppings = this.toppings.length-1
+      this.price = price + numberOfToppings
+      console.log(mediumPizza);
+    } else {
+      let price = 10
+      this.toppings.push(" " + topping);
+      numberOfToppings = this.toppings.length-1
+      this.price = price + numberOfToppings
+      console.log(largePizza);
     }
   
     
