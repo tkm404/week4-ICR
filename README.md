@@ -10,10 +10,14 @@ Expected Output: Pizza {size: "small", toppings:["pepperoni"]}
 
 Test: "It should return a Pizza object with a size, toppings, and price (presently returning an integer with no currecny markers) property."
 Code const smallPizza = new Pizza("small", ["pepperoni", "olives"], 5);
-Expected Output: Pizza {size: "small", toppings: ["pepperoni", "olives", price: 5]}
+Expected Output: Pizza {size: "small", toppings: ["pepperoni", "olives"], price: 5}
 
 Describe: Pizza.addToppings();
 
 Test: "It should add a topping to the toppings property of the Pizza object."
 Code: smallPizza.addToppings("sausage");
-Expected Output: Pizza {size: "small", toppings: ["pepperoni", "sausage", price 5]}
+Expected Output: Pizza {size: "small", toppings: ["pepperoni", "sausage"], price: 5}
+
+Test: "For each topping beyond the first, it should increase the price by 1."
+Code: smallPizza.addToppings("sausage");
+Expected Output: Pizza {size: "small", toppings: ["pepperoni", "sausage"], price: 6}

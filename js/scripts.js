@@ -5,9 +5,15 @@ function Pizza(size, topping, price) {
 }
 
 Pizza.prototype.addToppings = function(topping) {
+  let toppingCount = 0
   this.toppings.push(topping);
-  console.log(smallPizza)
-}
+  for (let i = 1; i < this.toppings.length; i++) {
+    toppingCount++
+    console.log(toppingCount)
+  }
+    this.price + toppingCount;
+    console.log(smallPizza.price);
+  }
 
 
 const smallPizza = new Pizza("small", ["pepperoni"], 5);
