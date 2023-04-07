@@ -60,7 +60,7 @@ Pizza.prototype.yourPizza = function() {
 };
 
   
-const myCheckout = new Checkout();
+
 const smallPizza = new Pizza("small", ["pepperoni"], 5);
 const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
 const largePizza = new Pizza ("large", ["pepperoni"], 10)
@@ -69,10 +69,26 @@ const largePizza = new Pizza ("large", ["pepperoni"], 10)
 // ----- User Interface Logic vvvv -----
 
 
+
+function priceGetter(sizeSelect) {
+  let price = 0  
+if (sizeSelect === "Small") {
+    price = 5
+  } else if (sizeSelect === "Medium") {
+    price = 7
+  } else {
+    price = 10
+  }
+};
+
 function handleMenuSubmission(event) {
   event.preventDefault();
+  const myCheckout = new Checkout();
   const sizeSelect = document.getElementById("size-pizza").value;
   const topSelect = document.querySelectorAll("input[name=topping]:checked");
+  priceGetter(sizeSelect);
+  const myPizza = new Pizza(sizeSelect, topSelect, price)
+  myCheckout.addPizza(myPizza)
 }
 
 
