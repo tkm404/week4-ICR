@@ -6,6 +6,45 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <h3>Select a Pizza Size</h3>
+<div id="menu-list"> 
+<form id="size-select">
+  <select id="size-pizza">
+    <option>Small</option>
+    <option>Medium</option>
+    <option>Large</option>
+  </select><br><br>
+</form>
+<h3>Select topping(s):</h3>
+<h4><em>Note: all pizzas come with pepperoni. Addt'l toppings for $1/per</em></h4>
+<form id="toppings-select">
+  <label for="sausage"> Sausage </label>
+    <input type="checkbox" name="topping" value="sausage" id="sausage">   
+  <label for="pineapple"> Pineapple </label>
+    <input type="checkbox" name="topping" value="pineapple" id="pineapple">
+  <label for="onions"> Onions </label>
+    <input type="checkbox" name="topping" value="onions" id="onions">
+  <br>
+  <label for="black-olives"> Black Olives </label>
+    <input type="checkbox" name="topping" value="black-olives" id="black-olives"> 
+  <label for="hot-peppers"> Hot Peppers </label>
+    <input type="checkbox" name="topping" value="hot-peppers" id="hot-peppers">
+  <label for="anchovies"> Anchovies </label>
+    <input type="checkbox" name="topping" value="anchovies">  
+</form><br><br>
+<button type="submit">Add to Order</button>
+
+</div> 
+<div id="view-order">
+<p><span id="size" class="hidden"></span></p>
+<p><span id="toppings" class="hidden"></span></p>
+<p><span id="price" class="hidden"></span></p>
+</div>
+
+
+<div id="complete-order">
+
+</div>
+
 </body>
 </html>
