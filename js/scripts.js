@@ -42,11 +42,11 @@ function Pizza(size, topping) {
 
 Pizza.prototype.addToppings = function([topping]) {
   if (this.size === "Small") {
-      this.toppingSet(5, topping)
+      this.toppingSet(5, [topping])
   } else if (this.size === "Medium") {
-      this.toppingSet(7, topping)
+      this.toppingSet(7, [topping])
   } else {
-      this.toppingSet(10, topping)
+      this.toppingSet(10, [topping])
   }
 };
 
@@ -75,8 +75,11 @@ function handleMenuSubmission(event) {
   let topFormArray = ["pepperoni"];
   const myCheckout = new Checkout();
   const sizeSelect = document.getElementById("size-pizza").value;
-  const topSelect = document.querySelectorAll("input[name=topping]:checked");
-  const topSelectArray = Array.from(topSelect);  
+  const topSelect = document.querySelectorAll("[name=topping]:checked");
+  const topSelectArray = Array.from(topSelect);
+  topSelectArray.forEach(function(element) {
+    topFormArray.push(element.toString());
+  });  
   const myPizza = new Pizza(sizeSelect, topFormArray)
   myPizza.addToppings(topSelectArray);
   myCheckout.addPizza(myPizza)
