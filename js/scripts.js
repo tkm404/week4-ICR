@@ -21,7 +21,13 @@ Checkout.prototype.addPizza = function(pizza) {
   console.log(price)
 }
 
-Checkout.prototype.priceCalculator
+Checkout.prototype.priceCalculator = function() {
+  let totalSale = 0
+  this.totalPrice.forEach(function(number) {
+    totalSale += number;
+    console.log(totalSale)
+  })
+}
 
 function Pizza(size, topping, price) {
   this.size = size
