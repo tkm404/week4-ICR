@@ -10,6 +10,13 @@ Pizza.prototype.toppingSet = function(price, topping) {
   }
 };
 
+Checkout.prototype.priceCalculator = function() {
+  let totalSale = 0
+  this.totalPrice.forEach(function(number) {
+  this.totalSale = totalSale += number;
+  })
+};
+
 // ----- Business Logic vvvv -----
 
 // Checkout Object vvvv
@@ -24,14 +31,10 @@ Checkout.prototype.addPizza = function(pizza) {
   this.pizzas[pizza.size] = pizza;
   let price = pizza.price
   this.totalPrice.push(price)
+
 };
 
-Checkout.prototype.priceCalculator = function() {
-  let totalSale = 0
-  this.totalPrice.forEach(function(number) {
-  this.totalSale = totalSale += number;
-  })
-};
+
 
 // Pizza Object vvvv
 
@@ -60,12 +63,6 @@ Pizza.prototype.yourPizza = function() {
   }
 };
 
-  
-
-// const smallPizza = new Pizza("small", ["pepperoni"], 5);
-// const mediumPizza = new Pizza("medium", ["pepperoni"], 7);
-// const largePizza = new Pizza ("large", ["pepperoni"], 10)
-
 
 // ----- User Interface Logic vvvv -----
 
@@ -83,14 +80,19 @@ function handleMenuSubmission(event) {
   const myPizza = new Pizza(sizeSelect, topFormArray)
   myPizza.addToppings(topFormArray);
   myCheckout.addPizza(myPizza);
+  myCheckout.priceCalculator();
   let viewOrder = document.getElementById("view-order");
   viewOrder.removeAttribute("class");
   document.querySelector("span#size").innerText = sizeSelect;
-  document.querySelector("span#toppings").innerText = topFormArray.toString();
+  document.querySelector("span#toppings").innerText = topFormArray.value;
   myCheckout.priceCalculator();
   document.querySelector("span#price").innerText = myCheckout.totalSale
-
+  let completeOrder = document.getElementById("complete-order");
+  let orderPara = document.createElement("p")
+  completeOrder.append(orderPara)
+  orderPara.append(myPizza.yourPizza())
 console.log(myCheckout)
+console.log(myCheckout.priceCalculator())
 }
 
 
