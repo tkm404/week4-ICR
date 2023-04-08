@@ -56,10 +56,9 @@ Pizza.prototype.addToppings = function(topping) {
 
 Pizza.prototype.yourPizza = function() {
   if (this.toppings.length > 1) {
-    let lastTopping = this.toppings.pop();
-    return this.size + " pizza with pepperoni," + this.toppings.toString() + " and" + lastTopping.toString() + " for $" + this.price;
+    return this.size + " " + this.toppings.toString() + " and pepperoni pizza for $" + this.price;
   } else {
-    return this.size + " pizza with pepperoni," + this.toppings.toString() + " for $" + this.price;
+    return this.size + " pepperoni pizza for $" + this.price;
   }
 };
 
@@ -75,22 +74,23 @@ function handleMenuSubmission(event) {
   const topSelect = document.querySelectorAll("[name=topping]:checked");
   const topSelectArray = Array.from(topSelect);
   topSelectArray.forEach(function(element) {
-    topFormArray.push(element.toString());
+    topFormArray.push(" " + element.value);
   });  
   const myPizza = new Pizza(sizeSelect, topFormArray)
   myPizza.addToppings(topFormArray);
   myCheckout.addPizza(myPizza);
-  myCheckout.priceCalculator();
+
   let viewOrder = document.getElementById("view-order");
   viewOrder.removeAttribute("class");
   document.querySelector("span#size").innerText = sizeSelect;
-  document.querySelector("span#toppings").innerText = topFormArray.value;
+  document.querySelector("span#toppings").innerText = "pepperoni" + myPizza.toppings;
   myCheckout.priceCalculator();
   document.querySelector("span#price").innerText = myCheckout.totalSale
   let completeOrder = document.getElementById("complete-order");
   let orderPara = document.createElement("p")
   completeOrder.append(orderPara)
   orderPara.append(myPizza.yourPizza())
+  
 console.log(myCheckout)
 console.log(myCheckout.priceCalculator())
 }
