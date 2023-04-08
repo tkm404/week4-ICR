@@ -17,6 +17,7 @@ Pizza.prototype.toppingSet = function(price, topping) {
 function Checkout() {
   this.pizzas = {}
   this.totalPrice = []
+  this.totalSale = 0
 }
 
 Checkout.prototype.addPizza = function(pizza) {
@@ -28,7 +29,7 @@ Checkout.prototype.addPizza = function(pizza) {
 Checkout.prototype.priceCalculator = function() {
   let totalSale = 0
   this.totalPrice.forEach(function(number) {
-    totalSale += number;
+  this.totalSale = totalSale += number;
   })
 };
 
@@ -81,7 +82,14 @@ function handleMenuSubmission(event) {
   });  
   const myPizza = new Pizza(sizeSelect, topFormArray)
   myPizza.addToppings(topFormArray);
-  myCheckout.addPizza(myPizza)
+  myCheckout.addPizza(myPizza);
+  let viewOrder = document.getElementById("view-order");
+  viewOrder.removeAttribute("class");
+  document.querySelector("span#size").innerText = sizeSelect;
+  document.querySelector("span#toppings").innerText = topFormArray.toString();
+  myCheckout.priceCalculator();
+  document.querySelector("span#price").innerText = myCheckout.totalSale
+
 console.log(myCheckout)
 }
 
