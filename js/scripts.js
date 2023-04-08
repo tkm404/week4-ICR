@@ -4,7 +4,7 @@ Pizza.prototype.toppingSet = function(price, topping) {
   if (topping === undefined) {
     this.price = price
   } else {
-  this.toppings.push(" " + topping);
+  this.toppings.push(" ");
       numberOfToppings = this.toppings.length-1
       this.price = price + numberOfToppings
   }
@@ -83,7 +83,7 @@ function handleMenuSubmission(event) {
   let viewOrder = document.getElementById("view-order");
   viewOrder.removeAttribute("class");
   document.querySelector("span#size").innerText = sizeSelect;
-  document.querySelector("span#toppings").innerText = "pepperoni" + myPizza.toppings;
+  document.querySelector("span#toppings").innerText = "pepperoni, " + myPizza.toppings;
   myCheckout.priceCalculator();
   document.querySelector("span#price").innerText = myCheckout.totalSale
   let completeOrder = document.getElementById("complete-order");
